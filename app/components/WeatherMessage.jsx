@@ -21,7 +21,7 @@ var React = require('react');
 // destructuring props and just passing in the variables
 var WeatherMessage = ({temp, location}) => {
     return (
-      <h3>it is {temp} in {location}</h3>
+      <h3 className="text-center">It is {temp}&deg; in {location}</h3>
     );
 };
 
