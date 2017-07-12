@@ -11,7 +11,10 @@ require('style!css!foundation-sites/dist/foundation.min.css');
 $(document).foundation();
 
 // App css
-require('style!css!applicationStyles')
+//require('style!css!applicationStyles')
+
+//App scss - this requires an additional loader sass
+require('style!css!sass!applicationStyles')
 
 // object destructuring example
 // var obj = {
