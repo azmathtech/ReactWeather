@@ -1,11 +1,28 @@
 var React = require('react');
 var {Link, IndexLink} = require('react-router');
+var queryString = require('query-string');
 
 
 var Nav = React.createClass({
   onSearch: function (e) {
       e.preventDefault();
-      alert('Not yet wired up!');
+
+      // var location =  this.search.value;
+      // if (location.length > 0) {
+      //   this.search.value = '';
+      //
+      //   var encodedLocation = queryString.stringify({location: location});
+      //   window.location.hash = '#/?' + encodedLocation
+      // }
+
+      var location = this.refs.searchLocation.value
+      var encodedLocation = encodeURIComponent(location);
+
+      if (location.length > 0) {
+        this.refs.searchLocation.value = '';
+        window.location.hash = '#/?location=' + encodedLocation;
+      }
+      //alert(location);
   },
 
   render: function () {
@@ -29,7 +46,7 @@ var Nav = React.createClass({
           <form onSubmit={this.onSearch}>
             <ul className="menu">
               <li>
-                <input type="search" placeholder="Search weather by city"/>
+                <input type="search" placeholder="Search weather by city" ref="searchLocation"/>
               </li>
               <li>
                 <input type="submit" className="button" value="Get Weather"/>
@@ -43,3 +60,9 @@ var Nav = React.createClass({
 });
 
 module.exports = Nav;
+
+
+
+//<input type="search" placeholder="Search weather by city" ref="searchLocation"/>
+
+//<input type="search" placeholder="Search weather by city" ref={(ref) => this.search = ref}/>
